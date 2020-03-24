@@ -25,7 +25,7 @@ SECRET_KEY = '&3aczi&^^!)ne@sjgkbl9jt4yo*3p9z2bys87(j1v)2j_(ydks'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','shopnewark-vendors.herokuapp.com/']
 
 
 # Application definition
@@ -145,4 +145,4 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_DEFAULT_REGION = os.environ.get('AWS_S3_REGION_NAME')
+AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION')
