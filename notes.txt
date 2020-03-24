@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <AllowedMethod>POST</AllowedMethod>
+        <AllowedMethod>PUT</AllowedMethod>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+</CORSConfiguration>
+
+
+##resizing images
+
+        def save(self):
+            super().save()
+
+            img = Image.open(self.image.path)
+
+            if img.height > 300 or img.width > 300:
+                output_size = (300,300)
+                img.thumbnail(output_size)
+                img.save(self.image.path)
+
+
+
+dynamoTable.put_item(
+                Item={
+                    "uuid": str(uuid.uuid1()),
+                    "company_name": form.cleaned_data.get('company_name'),
+                    "email": form.cleaned_data.get('email'),
+                    "location": form.cleaned_data.get('location'),
+                    "website": form.cleaned_data.get('website'),
+                    "phone_number_0": form.cleaned_data.get('phone_number_0'),
+                    "phone_number_1": form.cleaned_data.get('phone_number_1')
+                }
+            )
+
+            '''
+            for result in results['Items']:
+                if result['phone_number'] == form.cleaned_data.get('customer'):
+                    ##grabbing user info
+                    user_first_name = result['first_name']
+                    user_last_name = result['last_name']
+                    user_phone_number = result['phone_number']
+                    user_email  = result['email']
+                    user = [user_first_name, user_last_name, user_phone_number, user_email]
+                    ##displaying user is found
+                    messages.success(request, f'Customer Found!')
+                    ##sending user info to the next form
+                    request.session['customer'] = user_phone_number 
+                    request.session['user_first_name'] = user_first_name
+                    request.session['user_last_name'] = user_last_name
+                    request.session['user_email'] = user_email
+                    request.session['user'] = user
+                    
+                    ##redirecting to the add transaction form
+                    return redirect('add-transaction')
+                else:
+                    messages.warning(request, f'Customer NOT Found!')
+                    return redirect('search-customer')
+            '''
+
+
+            '''
+                request.session['customer'] = response['phone_number']
+                request.session['user_first_name'] = response['first_name']
+                request.session['user_last_name'] = response['last_name']
+                request.session['user_email'] = response['email']
+                '''
+
+github.com/github/gitignore/blob/master/Python.gitignore
