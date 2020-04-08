@@ -20,6 +20,7 @@ def home(request):
 def about(request):
     return render(request, 'core/about.html')
 
+@login_required
 def search_customer(request):
     if request.method == 'POST':
         form = SearchCustomerForm(request.POST)
@@ -43,6 +44,7 @@ def search_customer(request):
         form = SearchCustomerForm()
     return render(request, 'core/search_customer.html', {'form': form})
 
+@login_required
 def add_transaction(request):
     user_phone_number = request.session['customer']
     user_first_name = request.session['user_first_name']
