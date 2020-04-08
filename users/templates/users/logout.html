@@ -7,21 +7,21 @@ Logout
 
 {% block content %}
 <div class="container">
-  {% include "users/messages.html" %}
-  <div class="row">
-    <div class="col-lg-8 col-xl-8 mx-auto">
-        <div class="card card-signin flex-row my-5">
-            <div class="card-body">
-                <h5 class="card-title text-center">Goodbye!</h5>
-                <h6>You have been logged out</h6>
-                <div class="border-top pt-3">
-                    <small class="text-muted">
-                        <a href="{% url 'login' %}">Log In</a>
-                    </small>
+    {% include "users/messages.html" %}
+    <div class="row">
+        <div class="col-lg-8 col-xl-8 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Goodbye!</h5>
+                    <h6>You have been logged out</h6>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            <a href="{% url 'login' %}">Log In</a>
+                        </small>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
 </div>
 {% endblock content %}
