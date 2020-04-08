@@ -15,7 +15,7 @@ dynamoTable_users = dynamodb.Table("Users")
 dynamoTable_trans = dynamodb.Table("Transactions")
 
 def home(request):
-    return render(request, 'core/home.html')
+    return redirect('login')
 
 def about(request):
     return render(request, 'core/about.html')
