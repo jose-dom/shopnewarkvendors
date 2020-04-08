@@ -13,7 +13,7 @@ class UserRegisterForm(UserCreationForm):
             'bank_name', 'branch_location', 'aba_number', 'account_number',
             'banner',
             'business_structure', 'length_of_operation', 'number_of_employees', 'location_type', 'speical_business',
-            'tax_credits', 'rate',
+            'tax_credits',
             'terms_conditions',
             'password1', 'password2'
         ]
@@ -24,6 +24,15 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['address', 'website', 'email', 'phone_number']
+
+class SpecialUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [
+            'company_name', 'legal_name', 'business_type', 'contact_name',
+            'business_structure', 'length_of_operation', 'number_of_employees', 'location_type', 'speical_business',
+            'tax_credits',
+        ]
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:

@@ -53,7 +53,7 @@ APPROVED_OPTIONS = (
 )
 
 class Manager(BaseUserManager):
-    def create_user(self, email, company_name, legal_name, address, business_type, contact_name, phone_number, website, banner, business_structure, length_of_operation, number_of_employees, location_type, speical_business, tax_credits, rate, terms_conditions, password=None):
+    def create_user(self, email, company_name, legal_name, address, business_type, contact_name, phone_number, website, banner, business_structure, length_of_operation, number_of_employees, location_type, speical_business, terms_conditions, password=None):
         if not email:
             raise ValueError("Users must have an email address")
         if not company_name:
@@ -82,10 +82,6 @@ class Manager(BaseUserManager):
             raise ValueError("Users must have an location type")
         if not speical_business:
             raise ValueError("Users must have an special business")
-        if not tax_credits:
-            raise ValueError("Users must have an tax credits")
-        if not rate:
-            raise ValueError("Users must have an rate")
         if not terms_conditions:
             raise ValueError("Users must have an terms and conditions")
 
@@ -105,8 +101,6 @@ class Manager(BaseUserManager):
             number_of_employees=number_of_employees,
             location_type=location_type,
             speical_business=speical_business,
-            tax_credits=tax_credits,
-            rate=rate,
             terms_conditions=terms_conditions
         )
 
@@ -114,7 +108,7 @@ class Manager(BaseUserManager):
         user.save(using=self._db)
         return user
     
-    def create_superuser(self, email, company_name, legal_name, address, business_type, contact_name, phone_number, website, banner, business_structure, length_of_operation, number_of_employees, location_type, speical_business, tax_credits, rate, terms_conditions, password):
+    def create_superuser(self, email, company_name, legal_name, address, business_type, contact_name, phone_number, website, banner, business_structure, length_of_operation, number_of_employees, location_type, speical_business, terms_conditions, password):
         user = self.create_user(
             email=self.normalize_email(email),
             password=password,
@@ -131,8 +125,6 @@ class Manager(BaseUserManager):
             number_of_employees=number_of_employees,
             location_type=location_type,
             speical_business=speical_business,
-            tax_credits=tax_credits,
-            rate=rate,
             terms_conditions=terms_conditions
         )
         user.is_admin = True
@@ -171,8 +163,8 @@ class User(AbstractBaseUser):
 
     ##speical business info
     business_structure = models.CharField(max_length=1000, choices=BUSINESS_STRUCTURE_CHOICES)
-    length_of_operation = models.CharField(max_length=100, unique=False, verbose_name="Length of Operation", help_text="Ex: 10")
-    number_of_employees = models.CharField(max_length=100, unique=False, verbose_name="Number of Employees", help_text="Ex: 12")
+    length_of_operation = models.CharField(max_length=100, unique=False, verbose_name="Length of Operation", help_text="Ex: 10 months")
+    number_of_employees = models.CharField(max_length=100, unique=False, verbose_name="Number of Employees", help_text="Ex: 12 employees")
     location_type = MultiSelectField(choices=LOCATION_TYPE, unique=False, verbose_name="Does your business have a physical location? (Check all that apply)")
     speical_business = MultiSelectField(choices=SPECIAL_BUSINESS, unique=False, verbose_name="Is your business: (Check all that apply)")
 
@@ -191,7 +183,6 @@ class User(AbstractBaseUser):
         'company_name','legal_name', 'address', 'business_type', 'contact_name', 'phone_number', 'website',
         'banner',
         'business_structure', 'length_of_operation', 'number_of_employees', 'location_type', 'speical_business',
-        'tax_credits', 'rate',
         'terms_conditions'
     ]
 
@@ -209,7 +200,7 @@ class User(AbstractBaseUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.png', upload_to='profile_pics')
+    image = models.ImageField(default='default.png', upload_to='profile_pics', verbose_name="Profile Image")
 
     def __str__(self):
         return f'{self.user.email} Profile'

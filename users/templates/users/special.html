@@ -1,0 +1,35 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %}
+<section class="pricing py-5">
+    <div class="container">
+        {% include "users/messages.html" %}
+        <div class="row">
+            <div class="col-lg-8 col-xl-8 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Update Special Business Data</h5>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                {{ form|crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-warning rounded-pill px-4 py-2 text-white" type="submit">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer py-3">
+                        Return to <a href="{% url 'dashboard' %}">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

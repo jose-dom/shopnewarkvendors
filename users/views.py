@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, LoginForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, LoginForm, SpecialUpdateForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import User
@@ -89,6 +89,7 @@ def login_view(request):
 
     return render(request, "users/login.html", context)
 
+@login_required
 def transaction_data(request):
     transactions = []
     results = dynamoTable_trans.scan()
@@ -117,3 +118,20 @@ def transaction_data(request):
         'transactions': transactions
     }
     return render(request, "users/transaction_data.html", context)
+
+@login_required
+def special(request):
+    if request.method == 'POST':
+        s_form = SpecialUpdateForm(request.POST, instance=request.user)
+        
+        if s_form.is_valid():
+            s_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('special')
+    else:
+        s_form = SpecialUpdateForm(instance=request.user)
+    
+    context = {
+        'form': s_form,
+    }
+    return render(request, "users/special.html", context)

@@ -32,6 +32,7 @@ urlpatterns = [
     #path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('dashboard/', user_views.dashboard, name='dashboard'),
     path('transaction-data/', user_views.transaction_data, name='transaction_data'),
+    path('special/', user_views.special, name='special'),
 ]
 
 if settings.DEBUG:

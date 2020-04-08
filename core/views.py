@@ -38,7 +38,7 @@ def search_customer(request):
                 ##redirecting to the add transaction form
                 return redirect('add-transaction')
             else: 
-                messages.warning(request, f'Customer NOT Found!')
+                messages.warning(request, f'Number not found! Please info customer to register at eatplaystaynewark.com')
                 return redirect('search-customer')
     else:
         form = SearchCustomerForm()
