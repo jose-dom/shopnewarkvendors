@@ -26,7 +26,6 @@ def search_customer(request):
         if form.is_valid():
             user_phone_number = form.cleaned_data.get('customer')
             response = dynamoTable_users.query(KeyConditionExpression=Key('phone_number').eq(user_phone_number))
-            print(response)
             if response['Items']:
                 messages.success(request, f'Customer Found!')
                 for i in response['Items']:
