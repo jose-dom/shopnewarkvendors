@@ -1,0 +1,31 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %}
+<section class="pricing py-5">
+  <div class="container">
+    {% include "users/messages.html" %}
+    <div class="row">
+        <div class="col-lg-8 col-xl-8 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Page Not Found</h5>
+                    <p>
+                        Return to 
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'dashboard<' %}">Dashboard</a>
+                        {$ else $}
+                        <a href="{% url 'login' %}">Login</a>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
