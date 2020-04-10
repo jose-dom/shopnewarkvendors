@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
+from django.contrib import messages
 from .models import Profile, User
 
 class UserRegisterForm(UserCreationForm):
@@ -13,7 +14,6 @@ class UserRegisterForm(UserCreationForm):
             'bank_name', 'branch_location', 'aba_number', 'account_number',
             'banner',
             'business_structure', 'length_of_operation', 'number_of_employees', 'location_type', 'speical_business',
-            'tax_credits',
             'terms_conditions',
             'password1', 'password2'
         ]
@@ -31,7 +31,6 @@ class SpecialUpdateForm(forms.ModelForm):
         fields = [
             'company_name', 'legal_name', 'business_type', 'contact_name',
             'business_structure', 'length_of_operation', 'number_of_employees', 'location_type', 'speical_business',
-            'tax_credits',
         ]
 
 class ProfileUpdateForm(forms.ModelForm):

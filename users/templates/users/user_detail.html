@@ -33,6 +33,10 @@ Login
                             <li>Number of Employees: {{ object.number_of_employees }}</li>
                             <li>Location Type: {{ object.location_type }}</li>
                             <li>Special Business: {{ object.speical_business }}</li>
+                        </ul>
+                        <hr>
+                        <h5 class="text-uppercase">Tax Credit/Rates</h5>
+                        <ul class="fa-ul ml-0" style="list-style: none;">
                             <li>Collecting Tax Credits: {{ object.tax_credits }}</li>
                             <li>Tax Credit Rate: {{ object.rate }}</li>
                         </ul>
@@ -44,6 +48,16 @@ Login
                             <li>ABA Number: {{ object.aba_number }}</li>
                             <li>Account Number: {{ object.account_number }}</li>
                         </ul>
+                        <hr>
+                        <h5 class="text-uppercase"><span class="text-uppercase">Status</span></h5>
+                        <p>
+                                {% if object.approved == "YES" %}
+                                    Approved&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user-check" style="color: green;"></i>
+                                {% endif %}
+                                {% if object.approved == "NO" %}
+                                    Not Approved&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user-times" style="color: red;"></i>
+                                {% endif %}
+                        </p>
                     </div>
                     <div class="card-footer">
                         <div class="col-12">

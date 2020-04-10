@@ -18,7 +18,15 @@ def register(request):
     form = UserRegisterForm()
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
+        terms_conditions = request.POST['terms_conditions']
+        if form.errors:
+            for field in form:
+                for error in field.errors:
+                    print(error)
+                    print(field)
+        print(terms_conditions)
+        if form.is_valid() and terms_conditions == 'AGREE':
+            print(terms_conditions)
             form.save()
             dynamoTable.put_item(
                 Item={
@@ -32,6 +40,8 @@ def register(request):
                 }
             )
             return redirect('login')
+        elif form.is_valid() and terms_conditions == 'DISAGREE':
+            messages.warning(request, f'Please Agree to Terms & Conditions')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
@@ -146,6 +156,7 @@ class UserView(ListView):
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = User
     fields = [
+        'tax_credits','rate',
         'bank_name','branch_location','aba_number','account_number',
         'approved'
     ]

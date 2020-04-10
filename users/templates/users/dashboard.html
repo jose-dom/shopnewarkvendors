@@ -71,12 +71,26 @@ Dashboard
                   <li>Number of Employees: {{ user.number_of_employees }}</li>
                   <li>Location Type: {{ user.location_type }}</li>
                   <li>Special Business: {{ user.speical_business }}</li>
-                  <li>Collecting Tax Credits: {{ user.tax_credits }}</li>
-                  <li>Tax Credit Rate: {{ user.rate }}</li>
+                </ul>
+                <hr>
+                <h5 class="card-title text-uppercase">Tax Credit/Rates</h5>
+                <ul class="fa-ul ml-0" style="list-style: none;">
+                    <li>Collecting Tax Credits: {{ object.tax_credits }}</li>
+                    <li>Tax Credit Rate: {{ object.rate }}</li>
+                </ul>
+                <hr>
+                <h5 class="card-title text-uppercase">Payment Info</h5>
+                <ul class="fa-ul ml-0" style="list-style: none;">
+                    <li>Bank Name: {{ object.bank_name }}</li>
+                    <li>Branch Location: {{ object.branch_location }}</li>
+                    <li>ABA Number: {{ object.aba_number }}</li>
+                    <li>Account Number: {{ object.account_number }}</li>
                 </ul>
             </div>
             <div class="card-footer">
-              <p class="text-muted">To update please click on update other options</p>
+              <p class="text-muted">
+                To update please click on other options to update special business information. Contact Shop Newark if changes to payment info, tax credits, and rates are need.
+              </p>
             </div>
           </div>
         </div>

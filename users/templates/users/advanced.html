@@ -40,7 +40,14 @@ Transactions
                                 <td>{{ item.phone_number }}</td>
                                 <td>{{ item.number_of_employees }}</td>
                                 <td>{{ item.length_of_operation }}</td>
-                                <td>{{ item.approved }}</td>
+                                <td>
+                                    {% if item.approved == "YES" %}
+                                        Approved&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user-check" style="color: green;"></i>
+                                    {% endif %}
+                                    {% if item.approved == "NO" %}
+                                        Not Approved&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user-times" style="color: red;"></i>
+                                    {% endif %}
+                                </td>
                                 <td><a href="{% url 'user-update' item.pk %}"><i class="fas fa-user-edit"></i></a></td>
                             </tr>
                             {% endfor %}
