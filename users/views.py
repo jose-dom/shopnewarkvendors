@@ -160,3 +160,6 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             ##self.request.user.is_superuser
             return True
         return False
+
+class UserDetailView(DetailView):
+    model = User

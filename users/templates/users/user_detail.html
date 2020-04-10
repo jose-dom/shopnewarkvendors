@@ -1,0 +1,51 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %}
+<section class="pricing py-5">
+    <div class="container">
+        {% include "users/logout_btn.html" %}
+        {% include "users/messages.html" %}
+        <div class="row">
+            <div class="col-lg-8 col-xl-8 mx-auto">
+                <div class="card card-signin my-5">
+                    <img class="account-img mx-auto py-2" width="auto" height="60px" src="{{ object.profile.image.url }}" />
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase text-center">{{ user.company_name }}</h5>
+                        <hr>
+                        <h5 class="text-uppercase">Vendor Contact Info</h5>
+                        <ul class="fa-ul ml-0" style="list-style: none;">
+                            <li>Email: {{ object.email }}</li>
+                            <li>Address: {{ object.address }}</li>
+                            <li>Website (URL): {{ object.website }}</li>
+                            <li>Phone: {{ object.phone_number }}</li>
+                        </ul>
+                        <hr>
+                        <h5 class="text-uppercase">Special Business Data</h5>
+                        <ul class="fa-ul ml-0" style="list-style: none;">
+                            <li>Business Type: {{ object.business_type }}</li>
+                            <li>Business Structure: {{ object.business_structure }}</li>
+                            <li>Length of Operation: {{ object.length_of_operation }}</li>
+                            <li>Number of Employees: {{ object.number_of_employees }}</li>
+                            <li>Location Type: {{ object.location_type }}</li>
+                            <li>Special Business: {{ object.speical_business }}</li>
+                            <li>Collecting Tax Credits: {{ object.tax_credits }}</li>
+                            <li>Tax Credit Rate: {{ object.rate }}</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-12">
+                            <p style="float:left;">Return to <a href="{% url 'advanced' %}">Advanced</a></p>
+                            <p style="float:right;">Edit <a href="{% url 'user-update' object.pk %}">Payment/Approval</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -27,13 +27,13 @@ Transactions
                                 <th>Number of Employees</th>
                                 <th>Length of Operation</th>
                                 <th>Approved</th>
-                                <th>Verify</th>
+                                <th>Edit Payment/Approval</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for item in object_list %}
                             <tr>
-                                <td>{{ item.company_name }}</td>
+                                <td><a href="{% url 'user-detail' item.pk %}">{{ item.company_name }}</a></td>
                                 <td>{{ item.email }}</td>
                                 <td>{{ item.address }}</td>
                                 <td>{{ item.website }}</td>
@@ -41,7 +41,7 @@ Transactions
                                 <td>{{ item.number_of_employees }}</td>
                                 <td>{{ item.length_of_operation }}</td>
                                 <td>{{ item.approved }}</td>
-                                <td><a href="{% url 'user_update' item.id %}"><i class="fas fa-user-edit"></i></a></td>
+                                <td><a href="{% url 'user-update' item.pk %}"><i class="fas fa-user-edit"></i></a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -54,7 +54,8 @@ Transactions
                                 <th>Phone Number</th>
                                 <th>Number of Employees</th>
                                 <th>Length of Operation</th>
-                                <th>Approved</th>
+                                <th>Update</th>
+                                <th>Edit Payment/Approval</th>
                             </tr>
                         </tfoot>
                     </table>                      

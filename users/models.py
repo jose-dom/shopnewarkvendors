@@ -198,7 +198,7 @@ class User(AbstractBaseUser):
         return True
     
     def get_absolute_url(self):
-        return reverse("user-detail", kwargs={'id': self.id})
+        return reverse("user-detail", kwargs={'pk': self.pk})
 
 
 class Profile(models.Model):
