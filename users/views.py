@@ -15,7 +15,7 @@ dynamoTable = dynamodb.Table("Vendors")
 dynamoTable_trans = dynamodb.Table("Transactions")
 
 def error_404_view(request, exception):
-    return render(request, "404.html")
+    return render(request, "users/404.html")
 
 def register(request):
     form = UserRegisterForm()
