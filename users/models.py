@@ -198,7 +198,7 @@ class User(AbstractBaseUser):
         return True
     
     def get_absolute_url(self):
-        return reverse("core:user-detail", kwargs={'email': self.email})
+        return reverse("user-detail", kwargs={'email': self.email})
 
 
 class Profile(models.Model):
