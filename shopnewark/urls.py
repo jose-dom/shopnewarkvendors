@@ -34,7 +34,6 @@ urlpatterns = [
     path('transaction-data/', user_views.transaction_data, name='transaction_data'),
     path('special/', user_views.special, name='special'),
     path('advanced/', user_views.UserView.as_view(), name='advanced'),
-    path('user/<int:pk>/update', user_views.UserUpdateView.as_view(), name='user_update'),
 ]
 
 
