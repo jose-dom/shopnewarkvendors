@@ -16,7 +16,7 @@ dynamoTable_trans = dynamodb.Table("Transactions")
 
 def error_view(request):
     if request.user.is_authenticated:
-        messages.warning(request,f'Invalid Request')
+        messages.warning(request,f'Invalid Request. Please report any issue to via email to developer@jasfel.com')
         return redirect('dashboard')
     else:
         messages.warning(request,f'Invalid Request. Please Login.')
@@ -24,7 +24,7 @@ def error_view(request):
 
 def error_view_400(request, exception):
     if request.user.is_authenticated:
-        messages.warning(request,f'Invalid Request')
+        messages.warning(request,f'Invalid Request. Please report any issue to via email to developer@jasfel.com')
         return redirect('dashboard')
     else:
         messages.warning(request,f'Invalid Request. Please Login.')
