@@ -41,7 +41,7 @@ Transactions
                                 <td>{{ item.number_of_employees }}</td>
                                 <td>{{ item.length_of_operation }}</td>
                                 <td>{{ item.approved }}</td>
-                                <td><a href="{% url 'core:user_update' item.email %}"><i class="fas fa-user-edit"></i></a></td>
+                                <td><a href="{% url 'user_update' item.email %}"><i class="fas fa-user-edit"></i></a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
