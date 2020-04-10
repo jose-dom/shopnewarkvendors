@@ -14,8 +14,8 @@ dynamodb = boto3.resource("dynamodb")
 dynamoTable = dynamodb.Table("Vendors")
 dynamoTable_trans = dynamodb.Table("Transactions")
 
-def error_404_view(request, exception):
-    return render(request, "users/404.html")
+def error_view(request, exception):
+    return render(request, "users/error.html")
 
 def register(request):
     form = UserRegisterForm()

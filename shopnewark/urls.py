@@ -38,7 +38,10 @@ urlpatterns = [
     path('user/<int:pk>/', user_views.UserDetailView.as_view(), name='user-detail'),#Annoucement Detail View
 ]
 
-handler404 = 'users.views.error_404_view'
+handler404 = 'users.views.error_view'
+handler500 = 'users.views.error_view'
+handler403 = 'users.views.error_view'
+handler400 = 'users.views.error_view'
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
