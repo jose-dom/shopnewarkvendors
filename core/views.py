@@ -79,21 +79,3 @@ def add_transaction(request):
     else:
         form = TransactionForm()
     return render(request, 'core/add_transaction.html', {'form': form, 'user_phone_number': user_phone_number, 'user_first_name': user_first_name, 'user_last_name': user_last_name, 'user_email': user_email})
-
-class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = User
-    fields = [
-        'bank_name','branch_location','aba_number','account_number',
-        'approved'
-    ]
-
-    def form_valid(self, form):
-        messages.success(self.request, f'You have successfully updated the item')
-        return super().form_valid(form)
-
-    def test_func(self):
-        item = self.get_object()
-        if item:
-            ##self.request.user.is_superuser
-            return True
-        return False
