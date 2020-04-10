@@ -137,3 +137,26 @@ def special(request):
         'form': s_form,
     }
     return render(request, "users/special.html", context)
+
+class UserView(ListView):
+    model = User
+    paginate_by = 10
+    template_name = "users/advanced.html"
+
+class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = User
+    fields = [
+        'bank_name','branch_location','aba_number','account_number',
+        'approved'
+    ]
+
+    def form_valid(self, form):
+        messages.success(self.request, f'You have successfully updated the item')
+        return super().form_valid(form)
+
+    def test_func(self):
+        item = self.get_object()
+        if item:
+            ##self.request.user.is_superuser
+            return True
+        return False

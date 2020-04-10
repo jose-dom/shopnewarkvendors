@@ -1,5 +1,8 @@
 <div class="row my-5">
     <div class="col-12 ml-auto">
+        {% if request.user.is_superuser %}
+        <a class="btn btn-dark rounded-pill px-4 py-2 text-white" style="float:left;" href="{% url 'advanced' %}">Advanced&nbsp;&nbsp;&nbsp;<i class="fas fa-users-cog"></i></a>
+        {% endif %}
         <a class="btn btn-danger rounded-pill px-4 py-2 text-white" style="float:right;" href="{% url 'logout' %}">Logout&nbsp;&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i></a>
     </div>
 </div>

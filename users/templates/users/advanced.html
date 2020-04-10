@@ -1,0 +1,77 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Transactions
+{% endblock title %}
+
+{% block content %}
+<section class="pricing py-5">
+    <div class="container">
+        {% include "users/back_logout.html" %}
+        {% include "users/messages.html" %}
+        <div class="row py-5">
+            <div class="col-lg-12">
+                <div class="card card-signin mb-5 mb-lg-0">
+                    <div class="card-body">
+                    <h5 class="card-title text-uppercase text-center">Vendors</h5>
+                    <hr>
+                    <table id="trans" class="table-bordered table table-condensed table-hover table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Website</th>
+                                <th>Phone Number</th>
+                                <th>Number of Employees</th>
+                                <th>Length of Operation</th>
+                                <th>Approved</th>
+                                <th>Verify</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in object_list %}
+                            <tr>
+                                <td>{{ item.company_name }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>{{ item.address }}</td>
+                                <td>{{ item.website }}</td>
+                                <td>{{ item.phone_number }}</td>
+                                <td>{{ item.number_of_employees }}</td>
+                                <td>{{ item.length_of_operation }}</td>
+                                <td>{{ item.approved }}</td>
+                                <td><a href="{% url 'user_update' item.id %}"><i class="fas fa-user-edit"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Website</th>
+                                <th>Phone Number</th>
+                                <th>Number of Employees</th>
+                                <th>Length of Operation</th>
+                                <th>Approved</th>
+                            </tr>
+                        </tfoot>
+                    </table>                      
+                    </div>
+                    <div class="card-footer">
+                    <div class="row">
+                        <div class="col-8">
+                        <p>Return to <a href="{% url 'dashboard' %}">Dashboard</a></p>
+                        </div>
+                        <div class="col-4">
+                        <div class="align-items-center d-flex" id="menu">Download Options: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

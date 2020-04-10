@@ -196,6 +196,9 @@ class User(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
+    
+    def get_absolute_url(self):
+        return reverse("core:user-detail", kwargs={'id': self.id})
 
 
 class Profile(models.Model):
