@@ -42,8 +42,8 @@ Register
                         </div>
                       </div>
                       <div class="custom-control custom-checkbox mb-5">
-                        <input type="checkbox" class="custom-control-input" name="reach_out" id="reach_out">
-                        <label class="custom-control-label" for="reach_out">Have shopNewark reach out for payment</label>
+                        <input type="checkbox" class="custom-control-input" name="reach_out" id="reach_out" value="1" onchange="valueChanged()">
+                        <label class="custom-control-label" for="reach_out">Have Shop Newark reach out for payment</label>
                       </div>
                       <h6 class="card-title">Banners</h6>
                       <div class="form-row">
@@ -112,3 +112,14 @@ Register
   </div>
 </section>
 {% endblock content %}
+{% block extra_scripts %}
+<script type="text/javascript">
+  function valueChanged()
+    {
+        if($('#reach_out').is(":checked"))   
+            $(".hideable_payment_form").hide();
+        else
+            $(".hideable_payment_form").show();
+    }
+</script>
+{% endblock extra_scripts %}
