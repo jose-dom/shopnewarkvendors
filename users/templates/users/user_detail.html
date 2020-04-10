@@ -36,6 +36,14 @@ Login
                             <li>Collecting Tax Credits: {{ object.tax_credits }}</li>
                             <li>Tax Credit Rate: {{ object.rate }}</li>
                         </ul>
+                        <hr>
+                        <h5 class="text-uppercase">Payment Info</h5>
+                        <ul class="fa-ul ml-0" style="list-style: none;">
+                            <li>Bank Name: {{ object.bank_name }}</li>
+                            <li>Branch Location: {{ object.branch_location }}</li>
+                            <li>ABA Number: {{ object.aba_number }}</li>
+                            <li>Account Number: {{ object.account_number }}</li>
+                        </ul>
                     </div>
                     <div class="card-footer">
                         <div class="col-12">
