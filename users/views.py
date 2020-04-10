@@ -14,8 +14,21 @@ dynamodb = boto3.resource("dynamodb")
 dynamoTable = dynamodb.Table("Vendors")
 dynamoTable_trans = dynamodb.Table("Transactions")
 
-def error_view(request, exception):
-    return render(request, "users/error.html")
+def error_view(request):
+    if request.user.is_authenticated:
+        messages.warning(request,f'Invalid Request')
+        return redirect('dashboard')
+    else:
+        messages.warning(request,f'Invalid Request. Please Login.')
+        return redirect('login')
+
+def error_view_400(request, exception):
+    if request.user.is_authenticated:
+        messages.warning(request,f'Invalid Request')
+        return redirect('dashboard')
+    else:
+        messages.warning(request,f'Invalid Request. Please Login.')
+        return redirect('login')
 
 def register(request):
     form = UserRegisterForm()

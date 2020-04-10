@@ -35,13 +35,13 @@ urlpatterns = [
     path('special/', user_views.special, name='special'),
     path('advanced/', user_views.UserView.as_view(), name='advanced'),
     path('user/<int:pk>/update', user_views.UserUpdateView.as_view(), name='user-update'),
-    path('user/<int:pk>/', user_views.UserDetailView.as_view(), name='user-detail'),#Annoucement Detail View
+    path('user/<int:pk>/', user_views.UserDetailView.as_view(), name='user-detail'),
 ]
 
-handler404 = 'users.views.error_view'
+handler404 = 'users.views.error_view_400'
 handler500 = 'users.views.error_view'
-handler403 = 'users.views.error_view'
-handler400 = 'users.views.error_view'
+handler403 = 'users.views.error_view_400'
+handler400 = 'users.views.error_view_400'
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
