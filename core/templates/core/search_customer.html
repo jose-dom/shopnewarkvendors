@@ -7,8 +7,8 @@ Search Customer
 {% endblock title %}
 
 {% block content %}
-<section class="pricing py-5">
-  <div class="container">
+<div class="container">
+    {% include "users/back_logout.html" %}
     {% include "users/messages.html" %}
     <div class="row">
       <div class="col-lg-8 col-xl-8 mx-auto">
@@ -32,6 +32,5 @@ Search Customer
           </div>
       </div>
     </div>
-  </div>
-</section>
+</div>
 {% endblock content %}

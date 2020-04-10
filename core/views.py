@@ -55,6 +55,7 @@ def add_transaction(request):
         if form.is_valid():
             form.save()
             amount = form.cleaned_data.get('amount')
+            options = form.cleaned_data.get('options')
             date = datetime.datetime.now()
             timestamp = str(date.strftime("%A, %B %e, %Y | %I:%M:%S %p"))
             dynamoTable_trans.put_item(
@@ -69,7 +70,8 @@ def add_transaction(request):
                     "vendor_address": request.user.address,
                     "vendor_website": request.user.website,
                     "date": timestamp,
-                    "amount": amount
+                    "amount": amount,
+                    "options": options,
                 }
             )
             messages.warning(request, f'Transaction Added Successfully!')

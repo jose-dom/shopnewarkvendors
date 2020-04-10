@@ -8,11 +8,7 @@ Dashboard
 {% block content %}
 <section class="pricing py-5">
   <div class="container">
-      <div class="row">
-        <div class="col-12 ml-auto">
-          <a class="btn btn-danger rounded-pill px-4 py-2 text-white" style="float:right;" href="{% url 'logout' %}">Logout&nbsp;&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i></a>
-        </div>
-      </div>
+      {% include "users/logout_btn.html" %}
       {% include "users/messages.html" %}
       <div class="row py-5">
         <!--Vendor Info-->

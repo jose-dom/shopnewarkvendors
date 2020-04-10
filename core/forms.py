@@ -9,4 +9,4 @@ class SearchCustomerForm(forms.ModelForm):
 class TransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
-        fields = ['amount']
+        fields = ['amount','options']

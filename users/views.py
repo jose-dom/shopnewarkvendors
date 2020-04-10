@@ -103,6 +103,7 @@ def transaction_data(request):
             trans_user_phone_number = result['user_phone_number']
             trans_date = result['date']
             trans_amount = result['amount']
+            options = result['options']
             trans = [
                 trans_id, 
                 trans_user_first_name,
@@ -110,7 +111,8 @@ def transaction_data(request):
                 trans_user_email,
                 trans_user_phone_number,
                 trans_date,
-                trans_amount
+                trans_amount,
+                options,
             ]
             transactions.append(trans)
 
