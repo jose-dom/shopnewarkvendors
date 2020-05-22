@@ -151,16 +151,24 @@ def transaction_data(request):
 def special(request):
     if request.method == 'POST':
         s_form = SpecialUpdateForm(request.POST, instance=request.user)
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         
-        if s_form.is_valid():
+        if s_form.is_valid() and u_form.is_valid() and p_form.is_valid():
             s_form.save()
+            u_form.save()
+            p_form.save()
             messages.success(request, f'Your account has been updated!')
             return redirect('special')
     else:
         s_form = SpecialUpdateForm(instance=request.user)
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
     
     context = {
         'form': s_form,
+        'u_form': u_form,
+        'p_form': p_form,
     }
     return render(request, "users/special.html", context)
 

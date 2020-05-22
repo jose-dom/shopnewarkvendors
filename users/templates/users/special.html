@@ -14,10 +14,12 @@ Other Options
             <div class="col-lg-8 col-xl-8 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Update Special Business Data</h5>
+                        <h5 class="card-title text-center">Update Profile & Business Information</h5>
                         <form method="POST">
                             {% csrf_token %}
                             <fieldset class="form-group">
+                                {{ u_form|crispy }}
+                                {{ p_form|crispy }}
                                 {{ form|crispy }}
                             </fieldset>
                             <div class="form-group">
