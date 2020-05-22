@@ -144,36 +144,36 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     ##company info
-    company_name = models.CharField(max_length=100, unique=False, verbose_name="<strong>Name of Business</strong>&nbsp ")
-    legal_name = models.CharField(max_length=100, unique=False, verbose_name="<strong>Legal Name</strong>&nbsp")
-    address = models.CharField(max_length=100, unique=False, verbose_name="<strong>Address</strong>&nbsp")
-    business_type = models.CharField(max_length=100, unique=False, verbose_name="<strong>Type of Business</strong>&nbsp")
-    contact_name = models.CharField(max_length=100, unique=False, verbose_name="<strong>Contact Name</strong>&nbsp")
-    phone_number = models.CharField(max_length=12, blank=False, verbose_name="<strong>Contact Phone Number</strong>&nbsp", help_text="Ex: 800-786-8765")
-    website = models.CharField(max_length=30, unique=False, verbose_name="<strong>Website</strong>&nbsp", help_text="Ex: www.example.com")
+    company_name = models.CharField(max_length=100, unique=False, verbose_name="Name of Business")
+    legal_name = models.CharField(max_length=100, unique=False, verbose_name="Legal Name")
+    address = models.CharField(max_length=100, unique=False, verbose_name="Address")
+    business_type = models.CharField(max_length=100, unique=False, verbose_name="Type of Business")
+    contact_name = models.CharField(max_length=100, unique=False, verbose_name="Contact Name")
+    phone_number = models.CharField(max_length=12, blank=False, verbose_name="Contact Phone Number", help_text="Ex: 800-786-8765")
+    website = models.CharField(max_length=30, unique=False, verbose_name="Website", help_text="Ex: www.example.com")
 
     ##banking info
-    bank_name = models.CharField(max_length=100, unique=False, verbose_name="<strong>Bank Name</strong>&nbsp;", default="", blank=True)
-    branch_location = models.CharField(max_length=100, unique=False, verbose_name="<strong>Branch Location</strong>&nbsp;", default="", blank=True)
-    aba_number = models.CharField(max_length=100, unique=False, verbose_name="<strong>ABA Number</strong>&nbsp;", default="", blank=True)
-    account_number = models.CharField(max_length=100, unique=False, verbose_name="<strong>Account Number</strong>&nbsp;", default="", blank=True)
+    bank_name = models.CharField(max_length=100, unique=False, verbose_name="Bank Name", default="", blank=True)
+    branch_location = models.CharField(max_length=100, unique=False, verbose_name="Branch Location", default="", blank=True)
+    aba_number = models.CharField(max_length=100, unique=False, verbose_name="ABA Number", default="", blank=True)
+    account_number = models.CharField(max_length=100, unique=False, verbose_name="Account Number", default="", blank=True)
 
     ##banner info
-    banner = models.CharField(max_length=1000, choices=BANNER_CHOICES, verbose_name="<strong>Options</strong>&nbsp;")
+    banner = models.CharField(max_length=1000, choices=BANNER_CHOICES, verbose_name="Options")
 
     ##speical business info
-    business_structure = models.CharField(max_length=1000, choices=BUSINESS_STRUCTURE_CHOICES, verbose_name="<strong>Business Structure</strong>&nbsp;")
-    length_of_operation = models.CharField(max_length=100, unique=False, verbose_name="<strong>Length of Operation</strong>&nbsp;", help_text="Ex: 10 months")
-    number_of_employees = models.CharField(max_length=100, unique=False, verbose_name="<strong>Number of Employees</strong>&nbsp;", help_text="Ex: 12 employees")
-    location_type = MultiSelectField(choices=LOCATION_TYPE, unique=False, verbose_name="<strong>Does your business have a physical location? (Check all that apply)</strong>&nbsp;")
-    speical_business = MultiSelectField(choices=SPECIAL_BUSINESS, unique=False, verbose_name="<strong>Is your business: (Check all that apply)</strong>&nbsp;")
+    business_structure = models.CharField(max_length=1000, choices=BUSINESS_STRUCTURE_CHOICES, verbose_name="Business Structure")
+    length_of_operation = models.CharField(max_length=100, unique=False, verbose_name="Length of Operation", help_text="Ex: 10 months")
+    number_of_employees = models.CharField(max_length=100, unique=False, verbose_name="Number of Employees", help_text="Ex: 12 employees")
+    location_type = MultiSelectField(choices=LOCATION_TYPE, unique=False, verbose_name="Does your business have a physical location? (Check all that apply)")
+    speical_business = MultiSelectField(choices=SPECIAL_BUSINESS, unique=False, verbose_name="Is your business: (Check all that apply)")
 
     ##tax credits
-    tax_credits = models.CharField(max_length=1000, choices=TAX_CREDIT_OPTIONS, verbose_name="<strong>Tax Credits</strong>&nbsp;")
-    rate = models.CharField(choices=TAX_CREDITS_RATES, max_length=50, verbose_name="<strong>Percentage</strong>&nbsp;", default='', null=False)
+    tax_credits = models.CharField(max_length=1000, choices=TAX_CREDIT_OPTIONS, verbose_name="Tax Credits")
+    rate = models.CharField(choices=TAX_CREDITS_RATES, max_length=50, verbose_name="Percentage", default='', null=False)
 
     ##terms and conditions
-    terms_conditions = models.CharField(choices=TERMS_CONDITIONS, blank=False, verbose_name="<strong>Terms & Coniditons</strong>&nbsp;", default='Agree', max_length=8)
+    terms_conditions = models.CharField(choices=TERMS_CONDITIONS, blank=False, verbose_name="Terms & Coniditons", default='Agree', max_length=8)
 
     ##approved
     approved = models.CharField(choices=APPROVED_OPTIONS, default="NO", verbose_name="Application Approved", max_length=3)
