@@ -31,6 +31,7 @@ urlpatterns = [
     #path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     #path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('dashboard/', user_views.dashboard, name='dashboard'),
+    path('tax-bank/', user_views.tax_bank, name="tax-bank"),
     path('transaction-data/', user_views.transaction_data, name='transaction_data'),
     path('special/', user_views.special, name='special'),
     path('advanced/', user_views.UserView.as_view(), name='advanced'),

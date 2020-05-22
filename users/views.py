@@ -190,3 +190,6 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class UserDetailView(DetailView):
     model = User
+
+def tax_bank(request):
+    return render(request, "users/tax_credits_bank_info.html")

@@ -50,8 +50,8 @@ Dashboard
         </div>
       </div>
       <!--User Update Form-->
-      <div class="row py-5">
-        <div class="col-lg-6">
+      <div class="row py-5 align-items-center">
+        <div class="col-lg-6 m-auto">
           <div class="card pricing mb-5 mb-lg-0">
             <img class="account-img mx-auto py-2" width="auto" height="60px" src="{{ user.profile.image.url }}" />
             <div class="card-body">
@@ -73,21 +73,15 @@ Dashboard
                   <li>Special Business: {{ user.speical_business }}</li>
                 </ul>
                 <hr>
-                <h5 class="card-title text-uppercase">Tax Credit/Rates</h5>
-                <ul class="fa-ul ml-0" style="list-style: none;">
-                    <li>Collecting Tax Credits: *********<!--{{ object.tax_credits }}--></li>
-                    <li>Tax Credit Rate: *********<!--{{ object.rate }}--></li>
-                    <li><a class="btn btn-danger rounded-pill px-4 py-2 text-white" href="#">View</a></li>
-                </ul>
-                <hr>
-                <h5 class="card-title text-uppercase">Payment Info</h5>
-                  <ul class="fa-ul ml-0" style="list-style: none;">
-                      <li>Bank Name: *********<!--{{ object.bank_name }}--></li>
-                      <li>Branch Location: *********<!--{{ object.branch_location }}--></li>
-                      <li>ABA Number: *********<!--{{ object.aba_number }}--></li>
-                      <li>Account Number: *********<!--{{ object.account_number }}--></li>
-                  </ul>
-                  <a class="btn btn-danger rounded-pill px-4 py-2 text-white" href="#">View</a>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <h5 class="card-title text-uppercase">Tax Credit/Rates</h5>
+                    <h5 class="card-title text-uppercase">Payment Info</h5>
+                  </div>
+                  <div class="col-lg-6">
+                    <a class="btn btn-danger rounded-pill px-4 py-2 text-white my-3 ml-auto" href="{% url 'tax-bank' %}">View Information</a>
+                  </div>
+                </div>
             </div>
             <div class="card-footer">
               <p class="text-muted">
@@ -96,7 +90,7 @@ Dashboard
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
+        <!--<div class="col-lg-6">
           <div class="card pricing mb-5 mb-lg-0">
             <div class="card-body m-0">
               <h5 class="card-title text-uppercase text-center">Update Contact</h5>
@@ -113,7 +107,7 @@ Dashboard
               </form>
             </div>
           </div>
-        </div>
+        </div>-->
       </div>
   </div>
 </section>
