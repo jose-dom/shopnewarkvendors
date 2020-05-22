@@ -65,7 +65,7 @@ Dashboard
                 <hr>
                 <h5 class="card-title text-uppercase">Special Business Data</h5>
                 <ul class="fa-ul ml-0" style="list-style: none;">
-                  <li>Business Type<: {{ user.business_type }}</li>
+                  <li>Business Type: {{ user.business_type }}</li>
                   <li>Business Structure: {{ user.business_structure }}</li>
                   <li>Length of Operation: {{ user.length_of_operation }}</li>
                   <li>Number of Employees: {{ user.number_of_employees }}</li>
@@ -80,12 +80,12 @@ Dashboard
                 </ul>
                 <hr>
                 <h5 class="card-title text-uppercase">Payment Info</h5>
-                <ul class="fa-ul ml-0" style="list-style: none;">
-                    <li>Bank Name: {{ object.bank_name }}</li>
-                    <li>Branch Location: {{ object.branch_location }}</li>
-                    <li>ABA Number: {{ object.aba_number }}</li>
-                    <li>Account Number: {{ object.account_number }}</li>
-                </ul>
+                  <ul class="fa-ul ml-0" style="list-style: none;">
+                      <li>Bank Name: {{ object.bank_name }}</li>
+                      <li>Branch Location: {{ object.branch_location }}</li>
+                      <li>ABA Number: {{ object.aba_number }}</li>
+                      <li>Account Number: {{ object.account_number }}</li>
+                  </ul>
             </div>
             <div class="card-footer">
               <p class="text-muted">
