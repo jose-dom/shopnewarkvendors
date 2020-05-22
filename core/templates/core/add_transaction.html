@@ -27,43 +27,45 @@ New Transaction
   right: 15;
 }
 </style>
-<div class="container">
-  {% include "users/back_logout.html" %}
-  {% include "users/messages.html" %}
-  <div class="row">
-    <div class="col-lg-8 col-xl-8 mx-auto">
-        <div class="card card-signin mt-5">
-            <div class="card-body">
-                <h5 class="card-title text-center">New Transaction</h5>
-                <hr>
-                <div class="row">
-                  <div class="col-6">
-                    <h6 class="card-price ml-4">Customer Found</h6>
-                    <ul class="fa-ul" style="list-style: none;">
-                      <li>{{ user_first_name }}</li>
-                      <li>{{ user_last_name }}</li>
-                      <li>{{ user_email }}</li>
-                      <li>{{ user_phone_number }}</li>
-                    </ul>
+<section class="pricing py-5">
+  <div class="container">
+    {% include "users/back_logout.html" %}
+    {% include "users/messages.html" %}
+    <div class="row">
+      <div class="col-lg-8 col-xl-8 mx-auto">
+          <div class="card card-signin mt-5">
+              <div class="card-body">
+                  <h5 class="card-title text-center">New Transaction</h5>
+                  <hr>
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="card-price ml-4">Customer Found</h6>
+                      <ul class="fa-ul" style="list-style: none;">
+                        <li>{{ user_first_name }}</li>
+                        <li>{{ user_last_name }}</li>
+                        <li>{{ user_email }}</li>
+                        <li>{{ user_phone_number }}</li>
+                      </ul>
+                    </div>
+                    <div class="col-6">
+                      <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-warning rounded-pill px-4 py-2 text-white" type="submit">Enter</button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-                  <div class="col-6">
-                    <form method="POST">
-                      {% csrf_token %}
-                      <fieldset class="form-group">
-                          {{ form|crispy }}
-                      </fieldset>
-                      <div class="form-group">
-                          <button class="btn btn-warning rounded-pill px-4 py-2 text-white" type="submit">Enter</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-            </div>
-            <div class="card-footer py-3">
-                Wrong Customer? <a href="{% url 'search-customer' %}">Search Customer</a>
-            </div>
-        </div>
+              </div>
+              <div class="card-footer py-3">
+                  Wrong Customer? <a href="{% url 'search-customer' %}">Search Customer</a>
+              </div>
+          </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 {% endblock content %}
