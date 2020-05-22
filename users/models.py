@@ -26,7 +26,9 @@ LOCATION_TYPE = (
 SPECIAL_BUSINESS = (
     ("Minority Owned","Minority Owned"),
     ("Woman Owned","Woman Owned"),
-    ("MWBE Certified","MWBE Certified")
+    ("MWBE Certified","MWBE Certified"),
+    ("DBE Certified","DBE Certified"),
+    ("VOSBE Certified","VOSBE Certified"),
 )
 
 TAX_CREDIT_OPTIONS = (
@@ -36,10 +38,10 @@ TAX_CREDIT_OPTIONS = (
 )
 
 TAX_CREDITS_RATES = (
-    ("Cost to me: 10%, Net Reward to Customer: 7.0%","Cost to me: 10%, Net Reward to Customer: 7.0%"),
-    ("Cost to me: 14.3%, Net Reward to Customer: 10%","Cost to me: 14.3%, Net Reward to Customer: 10%"),
-    ("Cost to me: 17.1%, Net Reward to Customer: 12%","Cost to me: 17.1%, Net Reward to Customer: 12%"),
-    ("Other","Other")
+    ("1","Cost to me: 10%, Net Reward to Customer: 7.0%"),
+    ("2","Cost to me: 14.3%, Net Reward to Customer: 10%"),
+    ("3","Cost to me: 17.1%, Net Reward to Customer: 12%"),
+    ("4","Other")
 )
 
 TERMS_CONDITIONS = (
