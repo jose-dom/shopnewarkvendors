@@ -180,7 +180,7 @@ def special(request):
 
 class UserView(ListView):
     model = User
-    paginate_by = 10
+    #paginate_by = 1000
     template_name = "users/advanced.html"
 
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
