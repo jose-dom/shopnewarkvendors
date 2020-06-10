@@ -65,6 +65,29 @@ Transactions
                                 <th>Edit Payment/Approval</th>
                             </tr>
                         </tfoot>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-blog justify-content-center">
+                                {% if is_paginated %}
+                                    {% if page_obj.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                                        </li>
+                                    {% endif %}
+                                    {% for num in page_obj.paginator.page_range %}
+                                        {% if page_obj.number == num %}
+                                            <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                            <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if page_obj.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">»</span></a>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            </ul>
+                        </nav>
                     </table>                      
                     </div>
                     <div class="card-footer">
@@ -72,9 +95,9 @@ Transactions
                         <div class="col-8">
                         <p>Return to <a href="{% url 'dashboard' %}">Dashboard</a></p>
                         </div>
-                        <div class="col-4">
+                        <!--<div class="col-4">
                         <div class="align-items-center d-flex" id="menu">Download Options: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                        </div>
+                        </div>-->
                     </div>
                     </div>
                 </div>

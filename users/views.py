@@ -9,6 +9,8 @@ from .models import User
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
 import uuid
+from django.core.paginator import Paginator
+
 
 dynamodb = boto3.resource("dynamodb")
 dynamoTable = dynamodb.Table("Vendors")
@@ -141,9 +143,13 @@ def transaction_data(request):
                 options,
             ]
             transactions.append(trans)
+    paginator = Paginator(results, 25) # Show 25 contacts per page.
 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        'transactions': transactions
+        'transactions': transactions,
+        'page_obj': page_obj,
     }
     return render(request, "users/transaction_data.html", context)
 
