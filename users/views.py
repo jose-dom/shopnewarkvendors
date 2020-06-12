@@ -160,6 +160,20 @@ def special(request):
             s_form.save()
             u_form.save()
             p_form.save()
+            dynamoTable.update_item(
+                Key={
+                    "phone_number": request.user.phone_number,
+                },
+                UpdateExpression="set company_name=:company_name, business_type=:business_type, email=:email, address=:address, website=:website",
+                ExpressionAttributeValues={
+                    ":company_name": request.user.company_name,
+                    ":business_type": request.user.business_type,
+                    ":email": request.user.email,
+                    ":address": request.user.address,
+                    ":website": request.user.website,
+                },
+                ReturnValues="UPDATED_NEW"
+            )
             messages.success(request, f'Your account has been updated!')
             return redirect('special')
     else:
