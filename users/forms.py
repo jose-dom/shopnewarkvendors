@@ -19,7 +19,7 @@ class UserRegisterForm(UserCreationForm):
         ]
 
 class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField(max_length=60)
+    #email = forms.EmailField(max_length=60)
 
     class Meta:
         model = User
