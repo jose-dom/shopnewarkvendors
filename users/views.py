@@ -160,6 +160,7 @@ def special(request):
             s_form.save()
             u_form.save()
             p_form.save()
+            '''
             dynamoTable.update_item(
                 Key={
                     "phone_number": request.user.phone_number,
@@ -174,6 +175,7 @@ def special(request):
                 },
                 ReturnValues="UPDATED_NEW"
             )
+            '''
             messages.success(request, f'Your account has been updated!')
             return redirect('special')
     else:
