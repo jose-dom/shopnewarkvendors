@@ -23,7 +23,7 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['address', 'website', 'email']
+        fields = ['address', 'website', 'phone_number']
 
 class SpecialUpdateForm(forms.ModelForm):
     class Meta:
