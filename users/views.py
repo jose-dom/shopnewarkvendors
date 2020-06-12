@@ -13,7 +13,7 @@ from django.core.paginator import Paginator
 
 
 dynamodb = boto3.resource("dynamodb")
-dynamoTable = dynamodb.Table("Vendors")
+#dynamoTable = dynamodb.Table("Vendors")
 dynamoTable_trans = dynamodb.Table("Transactions")
 
 def error_view(request):
@@ -46,6 +46,7 @@ def register(request):
         if form.is_valid() and terms_conditions == 'AGREE':
             print(terms_conditions)
             form.save()
+            '''
             dynamoTable.put_item(
                 Item={
                     "uuid": str(uuid.uuid1()),
@@ -57,6 +58,7 @@ def register(request):
                     "website": form.cleaned_data.get('website'),
                 }
             )
+            '''
             return redirect('login')
         elif form.is_valid() and terms_conditions == 'DISAGREE':
             messages.warning(request, f'Please Agree to Terms & Conditions')
